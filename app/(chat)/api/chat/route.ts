@@ -23,23 +23,6 @@ export async function POST(request: Request) {
       "you are a friendly assistant! keep your responses concise and helpful.",
     messages: coreMessages,
     maxSteps: 5,
-    tools: {
-      getWeather: {
-        description: "Get the current weather at a location",
-        parameters: z.object({
-          latitude: z.number(),
-          longitude: z.number(),
-        }),
-        execute: async ({ latitude, longitude }) => {
-          const response = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&hourly=temperature_2m&daily=sunrise,sunset&timezone=auto`,
-          );
-
-          const weatherData = await response.json();
-          return weatherData;
-        },
-      },
-    },
     onFinish: async ({ responseMessages }) => {
       if (session.user && session.user.id) {
         try {
@@ -52,10 +35,6 @@ export async function POST(request: Request) {
           console.error("Failed to save chat");
         }
       }
-    },
-    experimental_telemetry: {
-      isEnabled: true,
-      functionId: "stream-text",
     },
   });
 
