@@ -1,22 +1,22 @@
 import { NextResponse } from "next/server";
-import { Configuration, OpenAIApi } from "openai";
+import { OpenAI } from "openai";
 
-const configuration = new Configuration({
+const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 export async function POST(request: Request) {
   try {
     const { question, response } = await request.json();
 
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+    const completion = await openai.chat.completions.create({
+      model: "meta-llama/llama-3.1-70b-instruct",
       messages: [
         {
           role: "system",
           content:
-            "You are a helpful assistant that determines if a response is congruent with a given question. Respond with 'yes' if it is, and 'no' if it isn't.",
+            "You are an expert business analysis assistant. Your task is to evaluate if the user's response is congruent with the question asked about their business and customers. If the answer is not nonsense and ok, respond only with 'Yes'. If it's not, respond only with 'No'. Do not provide any additional explanations or suggestions. Answer only with 'Yes' or 'No' in english.",
         },
         {
           role: "user",
@@ -24,10 +24,9 @@ export async function POST(request: Request) {
         },
       ],
     });
-
     const aiResponse =
-      completion.data.choices[0].message?.content.toLowerCase();
-    const isValid = aiResponse === "yes";
+      completion.choices[0].message?.content?.toLowerCase() ?? "";
+    const isValid = aiResponse.includes("yes");
 
     return NextResponse.json({ isValid });
   } catch (error) {

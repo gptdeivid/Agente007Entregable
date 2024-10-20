@@ -50,32 +50,37 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [steps, setSteps] = useState<Step[]>([
     {
-      title: "Preguntas iniciales",
-      question: "¿Cuál es tu objetivo principal?",
+      title: "A1- Problema abarcado",
+      question:
+        "¿Cuáles son los problemas más comunes que tus clientes buscan resolver con lo que ofreces? ¿De qué se tienen dudas /inquietudes en los últimos meses de tus servicios?",
       completed: false,
       response: "",
     },
     {
-      title: "ANALISIS EXTERNO - PESTEL",
-      question: "Describe los factores políticos que afectan tu negocio.",
+      title: "A2- Fuerzas de ventas",
+      question:
+        "¿Cómo contactas a tus clientes? ¿Tienes un equipo de ventas que los atiende directamente? ¿Para qué usan página web o redes sociales?",
       completed: false,
       response: "",
     },
     {
-      title: "Type something",
-      question: "¿Qué más quieres agregar?",
+      title: "B1- Geográfico",
+      question:
+        "¿Dónde están ubicados la mayoría de tus clientes actuales? ¿De qué ciudades son tus mejores 3 clientes?",
       completed: false,
       response: "",
     },
     {
-      title: "OTRO",
-      question: "¿Alguna otra consideración?",
+      title: "B2- Psicológico",
+      question:
+        "Conceptualizando a la persona encargada a quién vendes y toma decisión de compra contesta las siguientes secciones: ¿Qué edad tiene? ¿Cuál es su género? En 5 adjetivos ¿Cómo lo describirías?",
       completed: false,
       response: "",
     },
     {
-      title: "OTRO",
-      question: "¿Algo más que quieras mencionar?",
+      title: "B3- Económico",
+      question:
+        "¿Son personas o empresas con un nivel adquisitivo alto, medio o bajo? ¿Cuál es el precio promedio que tus clientes están dispuestos a pagar por tus productos/servicios? ¿Qué uso le dan a tu producto? Sitúa 2 casos",
       completed: false,
       response: "",
     },

@@ -13,13 +13,13 @@ export const Sidebar = () => {
   const { steps } = useChatContext(); // Consume the steps from context
 
   const formData = {
-    marca: searchParams.get("marca") || "",
-    industria: searchParams.get("industria") || "",
-    numEmpleados: searchParams.get("numEmpleados") || "",
-    anosEnMercado: searchParams.get("anosEnMercado") || "",
-    productoMasVendido: searchParams.get("productoMasVendido") || "",
-    ingresosMensuales: searchParams.get("ingresosMensuales") || "",
-    tamanoTicketPromedio: searchParams.get("tamanoTicketPromedio") || "",
+    marca: searchParams?.get("marca") || "",
+    industria: searchParams?.get("industria") || "",
+    numEmpleados: searchParams?.get("numEmpleados") || "",
+    anosEnMercado: searchParams?.get("anosEnMercado") || "",
+    productoMasVendido: searchParams?.get("productoMasVendido") || "",
+    ingresosMensuales: searchParams?.get("ingresosMensuales") || "",
+    tamanoTicketPromedio: searchParams?.get("tamanoTicketPromedio") || "",
   };
 
   const labelMap: Record<string, string> = {

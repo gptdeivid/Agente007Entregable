@@ -90,6 +90,7 @@ export default function Page() {
         setCurrentQuestion(currentQuestion + 1);
       } else {
         const newChatId = generateUUID();
+        console.log(formData);
         setChatId(newChatId);
         const queryParams = new URLSearchParams(formData).toString();
         router.push(`/chat/${newChatId}?${queryParams}`);
