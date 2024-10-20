@@ -2,11 +2,15 @@
 
 import { User, CheckCircle, Circle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { useContext } from "react";
+
+import { useChatContext } from "@/contexts/ChatContext";
 
 import { InfoIcon, UserIcon } from "./icons";
 
 export const Sidebar = () => {
   const searchParams = useSearchParams();
+  const { steps } = useChatContext(); // Consume the steps from context
 
   const formData = {
     marca: searchParams.get("marca") || "",
@@ -31,15 +35,6 @@ export const Sidebar = () => {
   const filteredEntries = Object.entries(formData).filter(
     ([key, value]) => value && key !== "marca" && key !== "industria"
   );
-
-  // Define the steps or questions with a completed state
-  const steps = [
-    { title: "Preguntas iniciales", completed: true },
-    { title: "ANALISIS EXTERNO - PESTEL", completed: false },
-    { title: "Type something", completed: false },
-    { title: "OTRO", completed: false },
-    { title: "OTRO", completed: false },
-  ];
 
   return (
     <div className="w-80 bg-muted p-3 h-dvh overflow-y-auto pt-16">
@@ -79,7 +74,9 @@ export const Sidebar = () => {
             ))}
           </div>
           <div className="mt-6">
-            <h3 className="text-sm font-semibold mb-2">Pasos</h3>
+            <h3 className="text-sm font-semibold mb-2">
+              Segmentación del mercado
+            </h3>
             <ul className="space-y-2">
               {steps.map((step, index) => (
                 <li
@@ -89,9 +86,9 @@ export const Sidebar = () => {
                 >
                   <span className="text-sm font-medium">{step.title}</span>
                   {step.completed ? (
-                    <CheckCircle className="size-5" />
+                    <CheckCircle className="h-5 w-5" />
                   ) : (
-                    <Circle className="size-5" />
+                    <Circle className="h-5 w-5" />
                   )}
                 </li>
               ))}

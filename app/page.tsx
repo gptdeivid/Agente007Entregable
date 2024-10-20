@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { generateUUID } from "@/lib/utils";
 
+import { Sidebar } from "../components/custom/sidebar";
+
 const questions = [
   { key: "marca", label: "¿Cuál es el nombre de tu marca?", type: "input" },
   {

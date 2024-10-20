@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Toaster } from "sonner";
+import { ChatProvider } from "../contexts/ChatContext";
 
 import { Navbar } from "@/components/custom/navbar";
 import { ThemeProvider } from "@/components/custom/theme-provider";
@@ -20,16 +21,18 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Toaster position="top-center" />
-          <Navbar />
-          {children}
-        </ThemeProvider>
+        <ChatProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Toaster position="top-center" />
+            <Navbar />
+            {children}
+          </ThemeProvider>
+        </ChatProvider>
       </body>
     </html>
   );
