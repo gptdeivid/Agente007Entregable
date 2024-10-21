@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 import { Message as PreviewMessage } from "@/components/custom/message";
 import { Sidebar } from "@/components/custom/sidebar";
@@ -66,8 +67,12 @@ export function Chat({
   const [reportContent, setReportContent] = useState<string | null>(null);
   const [showReport, setShowReport] = useState(false);
 
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
   useEffect(() => {
-    if (!allStepsCompleted) {
+    if (allStepsCompleted) {
+      handleAnalysis();
+    } else if (currentStepIndex < steps.length) {
       setLocalMessages((prev) => [
         ...prev,
         {
@@ -78,6 +83,28 @@ export function Chat({
       ]);
     }
   }, [currentStepIndex, allStepsCompleted]);
+
+  const handleAnalysis = async () => {
+    try {
+      setIsAnalyzing(true);
+      const response = await axios.post("/api/analyze", {
+        companyInfo: companyInfo,
+        steps: steps.map((step) => ({
+          title: step.title,
+          question: step.question,
+          response: step.response,
+        })),
+      });
+
+      setReportContent(response.data.analysis);
+      setShowReport(true);
+    } catch (error) {
+      console.error("Error submitting analysis:", error);
+      toast.error("Error submitting analysis. Please try again.");
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
 
   const handleQuestionSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
@@ -103,31 +130,9 @@ export function Chat({
         );
         setInput("");
       }
-    } else {
-      setLocalMessages((prev) => [
-        ...prev,
-        {
-          id: "user-final",
-          role: "user",
-          content: "Please analyze the provided information.",
-        },
-      ]);
-      try {
-        const response = await axios.post("/api/analyze", {
-          companyInfo: companyInfo,
-          steps: steps.map((step) => ({
-            title: step.title,
-            question: step.question,
-            response: step.response,
-          })),
-        });
-
-        setReportContent(response.data.analysis);
-        setShowReport(true);
-      } catch (error) {
-        console.error("Error submitting analysis:", error);
-        toast.error("Error submitting analysis. Please try again.");
-      }
+    }
+    if (allStepsCompleted) {
+      handleAnalysis();
     }
   };
 
@@ -139,7 +144,19 @@ export function Chat({
     <div className="flex flex-row h-dvh bg-background">
       <Sidebar />
       <div className="grow flex flex-col justify-between pb-4 md:pb-8">
-        {showReport ? (
+        {isAnalyzing ? (
+          <div className="grow flex items-center justify-center">
+            <div className="text-center">
+              <Loader2 className="h-10 w-10 animate-spin mx-auto mb-4" />
+              <p className="text-lg font-semibold">
+                Analizando la información...
+              </p>
+              <p className="text-sm text-gray-500">
+                Esto puede tomar unos minutos
+              </p>
+            </div>
+          </div>
+        ) : showReport ? (
           <div className="grow overflow-y-auto w-full max-w-4xl mx-auto px-4 py-12 bg-black text-white shadow-lg rounded-lg">
             <Button onClick={toggleView} className="mb-6" variant="outline">
               Regresar al chat
@@ -209,7 +226,7 @@ export function Chat({
             </form>
           </>
         )}
-        {reportContent && !showReport && (
+        {reportContent && !showReport && !isAnalyzing && (
           <div className="w-full max-w-3xl mx-auto px-4 mt-4">
             <Button
               onClick={toggleView}
