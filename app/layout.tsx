@@ -5,7 +5,12 @@ import { ChatProvider } from "../contexts/ChatContext";
 import { Navbar } from "@/components/custom/navbar";
 import { ThemeProvider } from "@/components/custom/theme-provider";
 
+
 import "./globals.css";
+import { NavbarWrapper } from "@/components/custom/navbar-wrapper";
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat.vercel.ai"),
@@ -20,18 +25,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className={inter.className}>
         <ChatProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+        
             <Toaster position="top-center" />
-            <Navbar />
+            <NavbarWrapper />
             {children}
-          </ThemeProvider>
         </ChatProvider>
       </body>
     </html>

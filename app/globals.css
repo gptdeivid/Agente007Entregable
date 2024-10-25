@@ -1,12 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Work+Sans:ital,wght@0,100..900;1,100..900&family=Zen+Dots&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --font-primary: 'Zen Dots', sans-serif;
+  --font-secondary: 'Nunito', sans-serif;
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-secondary);
+}
+
+div {
+  font-family: var(--font-secondary);
+}
+
+:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-primary: 'Zen Dots', sans-serif;
+  --font-secondary: 'Nunito', sans-serif;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -87,19 +108,7 @@
     @apply bg-background text-foreground;
   }
 
-  @font-face {
-    font-family: "geist";
-    font-style: normal;
-    font-weight: 100 900;
-    src: url(/fonts/geist.woff2) format("woff2");
-  }
-
-  @font-face {
-    font-family: "geist-mono";
-    font-style: normal;
-    font-weight: 100 900;
-    src: url(/fonts/geist-mono.woff2) format("woff2");
-  }
+ 
 }
 
 .skeleton {

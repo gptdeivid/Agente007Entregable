@@ -2,7 +2,11 @@
 const nextConfig = {
   experimental: {},
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        hostname: "placehold.co",
+      },
+    ],
   },
 };
 

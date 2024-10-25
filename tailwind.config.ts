@@ -9,8 +9,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      sans: ["geist"],
-      mono: ["geist-mono"],
+      primary: ["Zen Dots"],
+      secondary: ["Nunito"],
     },
     extend: {
       borderRadius: {
