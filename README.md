@@ -157,7 +157,7 @@ Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${compan
    - Explica las oportunidades y desafíos asociados.
 
 ---
-##Análisis de Infraestructura
+## Análisis de Infraestructura
 
 Proporciona un análisis detallado de la infraestructura por estado. Para cada estado, incluye:
 
@@ -182,7 +182,7 @@ Proporciona un análisis detallado de la infraestructura por estado. Para cada e
     E -->|Prompt Final| F[Reporte Generado]
 ```
 ----
-📚 #Mejores Prácticas
+📚 # Mejores Prácticas
 Contextualización:
 
 Incluir siempre el contexto más relevante.
