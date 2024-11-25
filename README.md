@@ -79,7 +79,7 @@ interface BasePrompt {
 ```
 
 
-Cadena de Procesamiento
+# Cadena de Procesamiento
 El flujo completo de procesamiento sigue una secuencia bien definida para garantizar resultados de alta calidad:
 
 Contexto Inicial:
@@ -113,7 +113,7 @@ const finalReport = await generateFinalReport(
 
 ---
 
-Optimización de Prompts
+# Optimización de Prompts
 Contextualización:
 
 Adaptar cada prompt con datos específicos de la empresa y su industria.
@@ -138,7 +138,7 @@ interface OutputControl {
   };
 }
 ```
-Ejemplos de Prompts
+#Ejemplos de Prompts
 Análisis TAM-SAM-SOM
 
 Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${companyInfo.nombreEmpresa} en ${companyInfo.industria}:
@@ -157,7 +157,7 @@ Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${compan
    - Explica las oportunidades y desafíos asociados.
 
 ---
-Análisis de Infraestructura
+##Análisis de Infraestructura
 
 Proporciona un análisis detallado de la infraestructura por estado. Para cada estado, incluye:
 
