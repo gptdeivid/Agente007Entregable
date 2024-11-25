@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "placehold.co",
+        hostname: "agente007.blob.core.windows.net",
       },
     ],
   },

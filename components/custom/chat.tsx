@@ -31,13 +31,9 @@ export function Chat({
 }) {
   const searchParams = useSearchParams();
   const companyInfo = {
-    marca: searchParams?.get("marca") || "",
+    empresa: searchParams?.get("empresa") || "",
     industria: searchParams?.get("industria") || "",
-    numEmpleados: searchParams?.get("numEmpleados") || "",
     anosEnMercado: searchParams?.get("anosEnMercado") || "",
-    productoMasVendido: searchParams?.get("productoMasVendido") || "",
-    ingresosMensuales: searchParams?.get("ingresosMensuales") || "",
-    tamanoTicketPromedio: searchParams?.get("tamanoTicketPromedio") || "",
   };
   const { messages, handleSubmit, input, setInput, append, isLoading, stop } =
     useChat({
@@ -126,7 +122,7 @@ export function Chat({
             },
             duration: 4000,
             closeButton: true,
-          }
+          },
         );
         setInput("");
       }

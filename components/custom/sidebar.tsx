@@ -3,37 +3,27 @@
 import { User, CheckCircle, Circle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useContext } from "react";
-
 import { useChatContext } from "@/contexts/ChatContext";
-
 import { InfoIcon, UserIcon } from "./icons";
 
 export const Sidebar = () => {
   const searchParams = useSearchParams();
-  const { steps } = useChatContext(); // Consume the steps from context
+  const { steps } = useChatContext();
 
   const formData = {
-    marca: searchParams?.get("marca") || "",
-    industria: searchParams?.get("industria") || "",
-    numEmpleados: searchParams?.get("numEmpleados") || "",
+    nombreEmpresa: searchParams?.get("nombreEmpresa") || "",
     anosEnMercado: searchParams?.get("anosEnMercado") || "",
-    productoMasVendido: searchParams?.get("productoMasVendido") || "",
-    ingresosMensuales: searchParams?.get("ingresosMensuales") || "",
-    tamanoTicketPromedio: searchParams?.get("tamanoTicketPromedio") || "",
+    industria: searchParams?.get("industria") || "",
   };
 
   const labelMap: Record<string, string> = {
-    marca: "Marca",
-    industria: "Industria",
-    numEmpleados: "Número de Empleados",
+    nombreEmpresa: "Nombre de la Empresa",
     anosEnMercado: "Años en el Mercado",
-    productoMasVendido: "Producto Más Vendido",
-    ingresosMensuales: "Ingresos Mensuales",
-    tamanoTicketPromedio: "Tamaño de Ticket Promedio",
+    industria: "Industria",
   };
 
   const filteredEntries = Object.entries(formData).filter(
-    ([key, value]) => value && key !== "marca" && key !== "industria"
+    ([key, value]) => value && key !== "nombreEmpresa" && key !== "industria"
   );
 
   return (
@@ -43,7 +33,7 @@ export const Sidebar = () => {
           <User className="size-10 text-zinc-800" />
         </div>
         <div className="flex flex-col gap-1 ml-4">
-          <div className="text-lg font-semibold">{formData.marca}</div>
+          <div className="text-lg font-semibold">{formData.nombreEmpresa}</div>
           <div className="text-md text-muted-foreground">
             {formData.industria}
           </div>
@@ -52,20 +42,13 @@ export const Sidebar = () => {
       {filteredEntries.length === 0 ? (
         <div className="text-zinc-500 size-full flex flex-row justify-center items-center text-sm gap-2">
           <InfoIcon />
-          <div>No user information available</div>
+          <div>No hay información del usuario disponible</div>
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs mb-6">
-            {filteredEntries.map(([key, value], index) => (
-              <div
-                key={key}
-                className={`flex flex-col ${
-                  filteredEntries.length === 5 && index === 4
-                    ? "col-span-2"
-                    : ""
-                }`}
-              >
+          <div className="grid grid-cols-1 gap-y-2 text-xs mb-6">
+            {filteredEntries.map(([key, value]) => (
+              <div key={key} className="flex flex-col">
                 <div className="font-medium text-muted-foreground">
                   {labelMap[key]}
                 </div>
@@ -75,7 +58,7 @@ export const Sidebar = () => {
           </div>
           <div className="mt-6">
             <h3 className="text-sm font-semibold mb-2">
-              Segmentación del mercado
+              Sondeo de Segmentación del mercado
             </h3>
             <ul className="space-y-2">
               {steps.map((step, index) => (

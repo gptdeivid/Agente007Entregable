@@ -8,7 +8,7 @@ export const SidebarOnboarding = () => {
   const searchParams = useSearchParams();
 
   const formData = {
-    marca: searchParams?.get("marca") || "",
+    nombreEmpresa : searchParams?.get("nombreEmpresa ") || "",
     industria: searchParams?.get("industria") || "",
   };
 
