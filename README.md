@@ -75,7 +75,8 @@ interface BasePrompt {
   companyName: string;      // Nombre de la empresa
   requirements: Array<string>; // Requisitos específicos
   format: string;           // Formato de salida esperado
-}
+
+```
 
 
 Cadena de Procesamiento
