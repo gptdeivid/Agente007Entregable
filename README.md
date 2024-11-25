@@ -1,61 +1,190 @@
 <a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Next.js AI Chatbot</h1>
+  <img alt="Agente 007 " src="https://agente007.blob.core.windows.net/imagenes/sietelog.png">
+  <h1 align="center">Agente007 Planeación de Negocios Para Todos</h1>
 </a>
 
-<p align="center">
-  An Open-Source AI Chatbot Template Built With Next.js and the AI SDK by Vercel.
-</p>
+# 📊 Sistema de Análisis de Mercado con Prompt Engineering Avanzado
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
-</p>
-<br/>
+Este proyecto implementa un sistema de análisis de mercado potenciado por IA que utiliza **prompt engineering avanzado** para generar análisis personalizados y detallados, dirigido a startups en México. 
 
-## Features
+---
 
-- [Next.js](https://nextjs.org) App Router
-  - Advanced routing for seamless navigation and performance
-  - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
-- [AI SDK](https://sdk.vercel.ai/docs)
-  - Unified API for generating text, structured objects, and tool calls with LLMs
-  - Hooks for building dynamic chat and generative user interfaces
-  - Supports OpenAI (default), Anthropic, Cohere, and other model providers
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - Component primitives from [Radix UI](https://radix-ui.com) for accessibility and flexibility
-- Data Persistence
-  - [Vercel Postgres powered by Neon](https://vercel.com/storage/postgres) for saving chat history and user data
-  - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
-- [NextAuth.js](https://github.com/nextauthjs/next-auth)
-  - Simple and secure authentication
+## 🚀 Stack Tecnológico
 
-## Model Providers
+### Frontend
+- **React.js v18.x**: Biblioteca para construir interfaces de usuario.
+- **Tailwind CSS v3.x**: Framework utility-first para estilizado.
 
-This template ships with OpenAI `gpt-4o` as the default. However, with the [AI SDK](https://sdk.vercel.ai/docs), you can switch LLM providers to [OpenAI](https://openai.com), [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://sdk.vercel.ai/providers/ai-sdk-providers) with just a few lines of code.
+### Backend
+- **Next.js v14.x**: Framework full-stack basado en React.
+- **TypeScript v5.x**: Superset tipado de JavaScript.
 
-## Deploy Your Own
+### Integraciones
+- **OpenRouter AI**:
+  - Acceso a modelos LLM (`meta-llama/llama-3.1-405b-instruct`).
+  - Procesamiento avanzado de prompts para generación de texto.
+- **Pinecone**:
+  - Base de datos vectorial para almacenamiento de embeddings y búsqueda semántica.
+  - Modelo `multilingual-e5-large` para generación de embeddings.
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fai-chatbot&env=AUTH_SECRET,OPENAI_API_KEY&envDescription=Learn%20more%20about%20how%20to%20get%20the%20API%20Keys%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fvercel%2Fai-chatbot%2Fblob%2Fmain%2F.env.example&demo-title=AI%20Chatbot&demo-description=An%20Open-Source%20AI%20Chatbot%20Template%20Built%20With%20Next.js%20and%20the%20AI%20SDK%20by%20Vercel.&demo-url=https%3A%2F%2Fchat.vercel.ai&stores=[{%22type%22:%22postgres%22},{%22type%22:%22blob%22}])
+## 🛠 Arquitectura del Sistema
 
-## Running locally
+### Capa de Presentación
+- Interfaz de usuario React con componentes funcionales y hooks personalizados.
+- Estilizado con Tailwind CSS para interfaces modernas y responsivas.
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+### Capa de Negocio
+- Lógica de aplicación centralizada en Context API.
+- API Routes de Next.js para endpoints dinámicos.
+- Servicios de IA para procesamiento de datos y generación de insights.
 
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various OpenAI and authentication provider accounts.
+### Capa de Datos
+- Integración con Pinecone para almacenamiento y búsqueda eficiente de embeddings.
+- Cacheo de resultados para minimizar tiempos de respuesta.
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+---
 
-```bash
-pnpm install
-pnpm dev
-```
+## 🧠 Flujo de Prompt Engineering
 
-Your app template should now be running on [localhost:3000](http://localhost:3000/).
+### Estructura de Prompts
+
+Los prompts están diseñados para ofrecer consistencia y precisión en los resultados, siguiendo estas características principales:
+
+1. **Estructura Base**
+   - **Contexto inicial**: Información relevante sobre la empresa, industria y requisitos.
+   - **Instrucciones específicas**: Indicaciones claras sobre los pasos a seguir.
+   - **Requisitos de formato**: Detalles sobre la estructura del resultado esperado.
+   - **Ejemplos**: Salidas esperadas para guiar el modelo.
+
+2. **Personalización**
+   Cada prompt se adapta dinámicamente utilizando:
+   - **Datos de la empresa**: Nombre, industria y requisitos.
+   - **Contexto relevante**: Información obtenida mediante búsquedas en Pinecone.
+   - **Formato de salida**: Resultados en Markdown o JSON, según los requisitos.
+
+3. **Control de Salida**
+   - Garantizar la coherencia y calidad del formato de respuesta.
+   - Incorporar métricas cuantitativas y cualitativas según las necesidades.
+
+```typescript
+interface BasePrompt {
+  context: string;          // Contexto relevante de Pinecone
+  industryFocus: string;    // Industria específica
+  companyName: string;      // Nombre de la empresa
+  requirements: Array<string>; // Requisitos específicos
+  format: string;           // Formato de salida esperado
+}
+
+
+Cadena de Procesamiento
+El flujo completo de procesamiento sigue una secuencia bien definida para garantizar resultados de alta calidad:
+
+Contexto Inicial:
+
+javascript
+Copy code
+const relevantContext = await getRelevantContext(companyInfo);
+Análisis Paralelo: Ejecutar múltiples análisis simultáneamente:
+
+javascript
+Copy code
+const [
+  basicDefinitions,
+  marketStructure,
+  startupCounts,
+  populationAnalysis,
+  // ...más análisis
+] = await Promise.all([...]);
+Consolidación y Reporte Final: Generar un reporte unificado:
+
+javascript
+Copy code
+const finalReport = await generateFinalReport(
+  analysisData, 
+  companyInfo, 
+  steps
+);
+Optimización de Prompts
+Contextualización:
+
+Adaptar cada prompt con datos específicos de la empresa y su industria.
+Incluir información relevante extraída mediante búsquedas vectoriales.
+Estructuración Consistente:
+
+Uso de un formato predefinido para asegurar claridad en los resultados.
+Incorporar ejemplos que guíen al modelo en la generación de contenido.
+Control de Formato y Salida:
+
+Definir formatos esperados, como Markdown o JSON.
+Especificar requisitos cualitativos y cuantitativos en los resultados.
+typescript
+Copy code
+interface OutputControl {
+  format: "markdown" | "json";
+  sections: Array<string>;
+  requirements: {
+    quantitative: boolean;
+    qualitative: boolean;
+    examples: boolean;
+  };
+}
+Ejemplos de Prompts
+Análisis TAM-SAM-SOM
+markdown
+Copy code
+Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${companyInfo.nombreEmpresa} en ${companyInfo.industria}:
+
+1. **Mercado Total Direccionable (TAM)**:
+   - Define el concepto.
+   - Calcula el TAM para emprendedores y startups.
+   - Explica la metodología y proporciona cifras específicas.
+
+2. **Mercado Accesible (SAM)**:
+   - Describe el segmento de mercado accesible para la empresa.
+   - Ofrece datos clave y ejemplos relevantes.
+
+3. **Mercado Objetivo (SOM)**:
+   - Determina el mercado específico de enfoque.
+   - Explica las oportunidades y desafíos asociados.
+Análisis de Infraestructura
+markdown
+Copy code
+Proporciona un análisis detallado de la infraestructura por estado. Para cada estado, incluye:
+
+1. **Infraestructura Financiera**:
+   - Disponibilidad de fondos.
+   - Programas de financiamiento.
+   - Instituciones financieras clave.
+
+2. **Infraestructura Tecnológica**:
+   - Cobertura de internet y conectividad.
+   - Presencia de hubs tecnológicos y startups.
+🔄 Flujo de Prompt Engineering Completo
+mermaid
+Copy code
+graph TD
+    A[Entrada de Usuario] -->|Validación| B[Contexto Inicial]
+    B -->|Embeddings| C[Búsqueda en Pinecone]
+    C -->|Contexto Relevante| D[Análisis Paralelo]
+    D -->|8 Análisis Simultáneos| E[Consolidación]
+    E -->|Prompt Final| F[Reporte Generado]
+📚 Mejores Prácticas
+Contextualización:
+
+Incluir siempre el contexto más relevante.
+Adaptar los prompts a las necesidades específicas de la industria.
+Estructuración:
+
+Seguir un formato claro y consistente.
+Incorporar ejemplos específicos que guíen al modelo.
+Validación:
+
+Verificar la presencia de todos los datos requeridos antes de ejecutar los prompts.
+Manejar errores y ofrecer feedback claro.
+🚀 Próximos Pasos
+Creación de prompts más especializados para industrias clave.
+Implementación de mejoras en la contextualización automática.
+Optimización de la cadena de procesamiento y tiempos de ejecución.
+Desarrollar un feedback loop para la mejora continua de prompts y resultados.
