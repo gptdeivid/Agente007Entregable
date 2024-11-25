@@ -84,13 +84,13 @@ El flujo completo de procesamiento sigue una secuencia bien definida para garant
 
 Contexto Inicial:
 
-javascript
-Copy code
+
 const relevantContext = await getRelevantContext(companyInfo);
+
 Análisis Paralelo: Ejecutar múltiples análisis simultáneamente:
 
 javascript
-Copy code
+
 const [
   basicDefinitions,
   marketStructure,
@@ -98,6 +98,9 @@ const [
   populationAnalysis,
   // ...más análisis
 ] = await Promise.all([...]);
+
+---
+
 Consolidación y Reporte Final: Generar un reporte unificado:
 
 javascript
@@ -107,6 +110,9 @@ const finalReport = await generateFinalReport(
   companyInfo, 
   steps
 );
+
+---
+
 Optimización de Prompts
 Contextualización:
 
@@ -120,8 +126,8 @@ Control de Formato y Salida:
 
 Definir formatos esperados, como Markdown o JSON.
 Especificar requisitos cualitativos y cuantitativos en los resultados.
-typescript
-Copy code
+```typescript
+
 interface OutputControl {
   format: "markdown" | "json";
   sections: Array<string>;
@@ -131,10 +137,10 @@ interface OutputControl {
     examples: boolean;
   };
 }
+```
 Ejemplos de Prompts
 Análisis TAM-SAM-SOM
-markdown
-Copy code
+
 Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${companyInfo.nombreEmpresa} en ${companyInfo.industria}:
 
 1. **Mercado Total Direccionable (TAM)**:
@@ -149,9 +155,10 @@ Genera tres secciones detalladas sobre los mercados TAM, SAM y SOM para ${compan
 3. **Mercado Objetivo (SOM)**:
    - Determina el mercado específico de enfoque.
    - Explica las oportunidades y desafíos asociados.
+
+---
 Análisis de Infraestructura
-markdown
-Copy code
+
 Proporciona un análisis detallado de la infraestructura por estado. Para cada estado, incluye:
 
 1. **Infraestructura Financiera**:
@@ -162,6 +169,8 @@ Proporciona un análisis detallado de la infraestructura por estado. Para cada e
 2. **Infraestructura Tecnológica**:
    - Cobertura de internet y conectividad.
    - Presencia de hubs tecnológicos y startups.
+
+---
 🔄 Flujo de Prompt Engineering Completo
 mermaid
 Copy code
@@ -171,6 +180,7 @@ graph TD
     C -->|Contexto Relevante| D[Análisis Paralelo]
     D -->|8 Análisis Simultáneos| E[Consolidación]
     E -->|Prompt Final| F[Reporte Generado]
+----
 📚 Mejores Prácticas
 Contextualización:
 
@@ -181,9 +191,8 @@ Estructuración:
 Seguir un formato claro y consistente.
 Incorporar ejemplos específicos que guíen al modelo.
 Validación:
+---
 
-Verificar la presencia de todos los datos requeridos antes de ejecutar los prompts.
-Manejar errores y ofrecer feedback claro.
 🚀 Próximos Pasos
 Creación de prompts más especializados para industrias clave.
 Implementación de mejoras en la contextualización automática.
