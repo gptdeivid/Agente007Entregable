@@ -6,7 +6,8 @@
 # 📊 Sistema de Análisis de Mercado 
 
 Este proyecto implementa un sistema de análisis de mercado potenciado por IA que utiliza **prompt engineering  avanzado  usando el conocimiento exclusivo de los modelos lkama 3.1 y RAG** para generar análisis personalizados y detallados, dirigido a startups en México. 
-[![ChatGPT vs Claude (and other AI's)](https://img.youtube.com/vi/pVzbocJNoco/0.jpg)](https://youtu.be/pVzbocJNoco)
+[Demo Agente 007](https://youtu.be/pVzbocJNoco)
+
 ---
 
 ## 🚀 Stack Tecnológico
