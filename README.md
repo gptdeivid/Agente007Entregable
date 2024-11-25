@@ -3,10 +3,10 @@
   <h1 align="center">Agente007 Planeación de Negocios Para Todos</h1>
 </a>
 
-# 📊 Sistema de Análisis de Mercado con Prompt Engineering Avanzado
+# 📊 Sistema de Análisis de Mercado 
 
-Este proyecto implementa un sistema de análisis de mercado potenciado por IA que utiliza **prompt engineering avanzado** para generar análisis personalizados y detallados, dirigido a startups en México. 
-
+Este proyecto implementa un sistema de análisis de mercado potenciado por IA que utiliza **prompt engineering  avanzado  usando el conocimiento exclusivo de los modelos lkama 3.1 y RAG** para generar análisis personalizados y detallados, dirigido a startups en México. 
+[Watch:Demo AGENTE 0O7](https://youtu.be/pVzbocJNoco)
 ---
 
 ## 🚀 Stack Tecnológico
@@ -89,7 +89,7 @@ const relevantContext = await getRelevantContext(companyInfo);
 
 Análisis Paralelo: Ejecutar múltiples análisis simultáneamente:
 
-javascript
+```javascript
 
 const [
   basicDefinitions,
@@ -99,6 +99,7 @@ const [
   // ...más análisis
 ] = await Promise.all([...]);
 
+```
 ---
 
 Consolidación y Reporte Final: Generar un reporte unificado:
