@@ -182,7 +182,7 @@ Proporciona un análisis detallado de la infraestructura por estado. Para cada e
     E -->|Prompt Final| F[Reporte Generado]
 ```
 ----
-📚 Mejores Prácticas
+📚 #Mejores Prácticas
 Contextualización:
 
 Incluir siempre el contexto más relevante.
@@ -194,7 +194,7 @@ Incorporar ejemplos específicos que guíen al modelo.
 Validación:
 ---
 
-🚀 Próximos Pasos
+🚀# Próximos Pasos
 Creación de prompts más especializados para industrias clave.
 Implementación de mejoras en la contextualización automática.
 Optimización de la cadena de procesamiento y tiempos de ejecución.
