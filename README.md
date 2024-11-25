@@ -172,14 +172,15 @@ Proporciona un análisis detallado de la infraestructura por estado. Para cada e
 
 ---
 🔄 Flujo de Prompt Engineering Completo
-mermaid
-Copy code
-graph TD
+
+```mermaid
+
     A[Entrada de Usuario] -->|Validación| B[Contexto Inicial]
     B -->|Embeddings| C[Búsqueda en Pinecone]
     C -->|Contexto Relevante| D[Análisis Paralelo]
     D -->|8 Análisis Simultáneos| E[Consolidación]
     E -->|Prompt Final| F[Reporte Generado]
+```
 ----
 📚 Mejores Prácticas
 Contextualización:
