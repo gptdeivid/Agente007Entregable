@@ -194,7 +194,7 @@ Incorporar ejemplos específicos que guíen al modelo.
 Validación:
 ---
 
-🚀# Próximos Pasos
+🚀 #Próximos Pasos
 Creación de prompts más especializados para industrias clave.
 Implementación de mejoras en la contextualización automática.
 Optimización de la cadena de procesamiento y tiempos de ejecución.
